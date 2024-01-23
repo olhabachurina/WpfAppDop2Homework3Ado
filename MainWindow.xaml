@@ -1,0 +1,132 @@
+﻿<Window x:Class="WpfAppDop2Homework3Ado.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppDop2Homework3Ado"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="1900" Width="1100">
+    <Window.Resources>
+        <SolidColorBrush x:Key="TextBoxBackground" Color="#F0F0F0"/>
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="{StaticResource TextBoxBackground}" />
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+        <Style x:Key="GreenButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Green"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+        <Style x:Key="RedButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Red"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#3498db"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0">
+            <TextBlock Text="Сервер:" VerticalAlignment="Center"/>
+            <TextBox x:Name="txtServer" Margin="5" VerticalAlignment="Center" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="1">
+            <TextBlock Text="База данных:" VerticalAlignment="Center"/>
+            <TextBox x:Name="txtDatabase" Margin="5" VerticalAlignment="Center" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="2">
+            <Button Content="Отобразить все товары" Margin="5" VerticalAlignment="Center" Click="DisplayAllGoodsButton_Click"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal">
+            <Button Content="Подключиться" Click="ConnectButton_Click" Style="{StaticResource GreenButtonStyle}"/>
+            <Button Content="Отключиться" Click="DisconnectButton_Click" Style="{StaticResource RedButtonStyle}"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="4">
+            <ListBox Name="productsListBox" DisplayMemberPath="Name"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="5" Orientation="Horizontal">
+            <ListBox Name="productTypesListBox" Margin="5" VerticalAlignment="Center"/>
+            <Button Content="Отобразить все типы товаров" Margin="5" VerticalAlignment="Center" Click="DisplayAllProductTypesButton_Click"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="6" Orientation="Horizontal">
+            <ListBox Name="managersListBox" Margin="5" VerticalAlignment="Center"/>
+            <Button Content="Отобразить всех менеджеров" Margin="5" VerticalAlignment="Center" Click="DisplayAllManagersButton_Click"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="7" Orientation="Horizontal">
+            <Button Content="Отобразить товары с максимальным количеством" Margin="5" VerticalAlignment="Center" Click="DisplayProductsWithMaxQuantityButton_Click"/>
+            <Button Content="Отобразить товары с минимальным количеством" Margin="5" VerticalAlignment="Center" Click="DisplayProductsWithMinQuantityButton_Click"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="8" Orientation="Horizontal">
+            <Button Content="Отобразить товары с минимальной стоимостью за единицу" Margin="5" VerticalAlignment="Center" Click="DisplayProductsWithMinCostPerUnitButton_Click"/>
+            <Button Content="Отобразить товары с максимальной стоимостью за единицу" Margin="5" VerticalAlignment="Center" Click="DisplayProductsWithMaxCostPerUnitButton_Click"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="9" Orientation="Horizontal">
+            <TextBlock Text="Тип товара:" VerticalAlignment="Center"/>
+            <TextBox x:Name="txtProductType" Margin="5" VerticalAlignment="Center" />
+            <Button Content="Отобразить товары по типу" Margin="5" VerticalAlignment="Center" Click="DisplayProductsByTypeButton_Click"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="10" Orientation="Horizontal">
+            <TextBlock Text="Имя менеджера:" VerticalAlignment="Center"/>
+            <TextBox x:Name="txtManagerName" Margin="5" VerticalAlignment="Center" />
+            <Button Content="Отобразить товары, проданные менеджером" Margin="5" VerticalAlignment="Center" Click="DisplayProductsSoldByManagerButton_Click"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="11" Orientation="Horizontal">
+            <TextBlock Text="Компания клиента:" VerticalAlignment="Center"/>
+            <TextBox x:Name="txtCustomerCompany" Margin="5" VerticalAlignment="Center" />
+            <Button Content="Отобразить товары, купленные компанией" Margin="5" VerticalAlignment="Center" Click="DisplayProductsBoughtByCompanyButton_Click"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="12">
+            <Button Content="Отобразить последнюю продажу" Margin="5" VerticalAlignment="Center" Click="DisplayLatestSaleButton_Click"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="13">
+            <Button Content="Отобразить среднее количество по типу" Margin="5" VerticalAlignment="Center" Click="DisplayAverageQuantityByTypeButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
+
